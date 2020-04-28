@@ -42,7 +42,7 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                       top: 0.0,
                       left: 0.0,
-                      child: Text("PostoApp",
+                      child: Text("Vacine",
                         style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -86,9 +86,10 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               Divider(),
-              DrawerTile(Icons.supervisor_account, "Usuários",pageController,0),
-              DrawerTile(Icons.assignment, "Chamado/Preventiva",pageController,1),
-              DrawerTile(Icons.show_chart, "Dashboard",pageController,2),
+              DrawerTile(Icons.people, "Usuários",pageController,0),
+              DrawerTile(Icons.face, "Filhos",pageController,1),
+              DrawerTile(Icons.enhanced_encryption, "Vacinas",pageController,2),
+              DrawerTile(Icons.local_hospital, "Postos",pageController,3),
               //DrawerTile(Icons.perm_identity, "Cliente",pageController,2),
               //DrawerTile(Icons.playlist_add_check, "Meus Pedidos",pageController,3)
             ],
