@@ -10,4 +10,5 @@ class UserData {
     id = data['id'];
     cpf = data['cpf'];
   }
+
 }

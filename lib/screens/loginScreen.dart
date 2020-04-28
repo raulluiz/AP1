@@ -5,6 +5,7 @@ import 'package:scoped_model/scoped_model.dart';
 // import 'Cliente/chamado_screen.dart';
 // import 'Tecnico/chamadoTecnico_screen.dart';
 // import 'Terceirizada/menu_screen.dart';
+import 'menuScreen.dart';
 import 'signUpScreen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -145,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.of(context).pop();
     print("-----------Flutter App Raul-------------");
     Navigator.of(context).push(
-          MaterialPageRoute(builder: (context)=>ChamadoClienteScreen()) //ChamadoClienteScreen
+          MaterialPageRoute(builder: (context)=>MenuScreen()) //ChamadoClienteScreen
       );
 
     //var perfil = user.userApp.perfil;
