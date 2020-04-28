@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_ap1/data/filhosData.dart';
+import 'package:projeto_ap1/data/userData.dart';
 import 'package:projeto_ap1/models/filhoModel.dart';
 import 'package:projeto_ap1/models/userModel.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -21,9 +22,15 @@ class _UpdateFilhoScreenState extends State<UpdateFilhoScreen> {
   final _cpfController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  
   @override
   Widget build(BuildContext context) {
+    _nameController.text = widget.filho.nome;
+    _dataNascimento.text = widget.filho.dataNascimento;
+    _estado.text = widget.filho.estado;
+    _cidade.text = widget.filho.cidade;
+    _bairro.text = widget.filho.bairro;
+    _numeroSus.text = widget.filho.numeroSus;
+    _cpfController.text = widget.filho.cpf;
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
@@ -115,7 +122,7 @@ class _UpdateFilhoScreenState extends State<UpdateFilhoScreen> {
                     height: 44.0,
                     child: RaisedButton(
                         child: Text(
-                          "Adicionar Filho",
+                          "Salvar",
                           style: TextStyle(fontSize: 10.0),
                         ),
                         textColor: Colors.white,
@@ -130,11 +137,12 @@ class _UpdateFilhoScreenState extends State<UpdateFilhoScreen> {
                             "estado": _estado.text,
                             "cidade": _cidade.text,
                             "bairro": _bairro.text,
-                            "numeroSus": _numeroSus.text
+                            "numeroSus": _numeroSus.text,
+                            "id": widget.filho.id
                           };
 
                           FilhoModel filho = new FilhoModel();
-                          filho.addFilho(
+                          filho.updateFilho(
                               filhoData: filhoData,
                               onSuccess: _onSuccess,
                               onFail: _onFail);

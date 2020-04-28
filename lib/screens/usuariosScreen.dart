@@ -3,6 +3,8 @@ import 'package:mysql1/mysql1.dart';
 import 'package:projeto_ap1/data/userData.dart';
 import 'package:projeto_ap1/models/userModel.dart';
 
+import 'updateUsuarioScreen.dart';
+
 class ListaUsuarios extends StatelessWidget {
     final UserData user;
 
@@ -57,12 +59,9 @@ ListView _jobsListView(data) {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: (){
-
-            var tst = data;
-            var ind = index;
-            // Navigator.of(context).push(
-            //     MaterialPageRoute(builder: (context)=>ChamadoView(chamado: data[index],))
-            // );
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context)=>EditUserScreen(usuario: data[index]))
+            );
           },
           child: Card(
               elevation: 3.0,

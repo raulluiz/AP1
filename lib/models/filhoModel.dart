@@ -58,7 +58,7 @@ class FilhoModel extends Model {
         "nome = '${filhoData["nome"]}', "+
         "cpf = '${filhoData["cpf"]}', "+
         "dataNascimento = '${filhoData["dataNascimento"]}', " +
-        "estado = ${filhoData["estado"]}', "+
+        "estado = '${filhoData["estado"]}', "+
         "cidade = '${filhoData["cidade"]}', "+
         "bairro = '${filhoData["bairro"]}', "+
         "numeroSus = '${filhoData["numeroSus"]}' "+

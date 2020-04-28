@@ -65,23 +65,6 @@ class UsuarioModel extends Model {
 
       notifyListeners();
     }
-
-    // Finally, close the connection
-
-    // String url =
-    //     'http://postosobcontrole.com/api/Login';
-
-    // //print(await apiRequest(url, login,senha));
-
-    // var dataFromResponse = await _getUser(login, senha);
-    // Map mapResponse = json.decode(dataFromResponse);
-
-    // _userData = UserData(mapResponse);
-
-    // onSuccess();
-    // _isLoading = false;
-
-    // notifyListeners();
   }
 
   Future<String> apiRequest(String url, String login, String senha) async {
@@ -116,21 +99,34 @@ class UsuarioModel extends Model {
     _isLoading = false;
     notifyListeners();
     onSuccess();
-    // _auth
-    //     .createUserWithEmailAndPassword(
-    //     email: userData["email"], password: pass)
-    //     .then((user) async {
-    //   fireBaseUser = user as FirebaseUser;
+  }
 
-    //   await _saveUserData(userData);
+  Future<void> updateUsuario(
+      {@required Map<String, dynamic> usuarioData,
+      @required VoidCallback onSuccess,
+      @required VoidCallback onFail}) async {
+    _isLoading = true;
+    notifyListeners();
+    final conn = await MySqlConnection.connect(ConnectionSettings(
+        host: '204.93.216.11',
+        port: 3306,
+        user: 'jbraz300_raul',
+        password: 'Qu@lquer1',
+        db: 'jbraz300_ap1'));
 
-    //   onSuccess();
-    //   _isLoading = false;
-    //   notifyListeners();
-    // }).catchError((e) {
-    //   onFail();
-    //   _isLoading = false;
-    //   notifyListeners();
-    // });
+    // Create a table
+    await conn.query(
+        "update usuario set "+
+        "nome = '${usuarioData["nome"]}', "+
+        "cpf = '${usuarioData["cpf"]}', "+
+        "email = '${usuarioData["email"]}' " +
+        "where id = ${usuarioData["id"]}");
+
+    // Finally, close the connection
+    await conn.close();
+
+    _isLoading = false;
+    notifyListeners();
+    onSuccess();
   }
 }
